@@ -1,6 +1,5 @@
 import discord
 import time
-import nekos
 import os
 import json
 from discord.ext import commands
@@ -67,4 +66,5 @@ async def startgiveaway(ctx):
 
 
 
-client.run('ODM2OTgxNzk3NjU2MTk5MjA5.YIl6Cg.AP8vZKeqfKVQ-LlyiJzQHniLmU0', reconnect=True)
+
+client.run(os.environ['TOKEN'], reconnect=True)
