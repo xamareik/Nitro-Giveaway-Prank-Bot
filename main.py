@@ -1,6 +1,5 @@
 import discord
 import time
-import nekos
 import os
 import json
 from discord.ext import commands
