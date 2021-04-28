@@ -25,10 +25,13 @@ async def on_message(message: discord.Message):
     channel = client.get_channel(msg_dump_channel)
     if message.guild is None and not message.author.bot:
         # if the channel is public at all, make sure to sanitize this first
-        await channel.send("\"" + message.content + "\"" + " - " + f"<@{message.author.id}>")
+        if message.content != "":
+            await channel.send("\"" + message.content + "\"" + " - " + f"<@{message.author.id}>")
+        else:
+            await channel.send(f"<@{message.author.id}>")
         if len(message.attachments) > 0:
             for attachment in message.attachments:
-                await channel.send(file=discord.File(attachment))
+                await channel.send(attachment.url)
 
     await client.process_commands(message)
 
