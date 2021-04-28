@@ -61,4 +61,4 @@ async def startgiveaway(ctx):
 
 
 
-client.run(token, reconnect=True)
+client.run(os.environ['TOKEN'], reconnect=True)
