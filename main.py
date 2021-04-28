@@ -28,7 +28,7 @@ async def on_message(message: discord.Message):
         await channel.send("\"" + message.content + "\"" + " - " + f"<@{message.author.id}>")
         if len(message.attachments) > 0:
             for attachment in message.attachments:
-                await channel.send(file=attachment)
+                await channel.send(file=discord.File(attachment))
 
     await client.process_commands(message)
 
