@@ -10,13 +10,6 @@ intents.members = True
 client = commands.Bot(description = "Your Mom Sex", command_prefix = '!', intents=intents)
 
 
-with open('config.json') as f:
-    config = json.load(f)
-
-
-
-
-token = config.get('token')
 
 @client.event
 async def on_ready():
