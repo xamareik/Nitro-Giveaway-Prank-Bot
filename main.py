@@ -11,13 +11,7 @@ intents.members = True
 client = commands.Bot(description = "Your Mom Sex", command_prefix = '!', intents=intents)
 
 
-with open('config.json') as f:
-    config = json.load(f)
 
-
-
-
-token = config.get('token')
 
 @client.event
 async def on_ready():
@@ -32,7 +26,11 @@ async def on_message(message: discord.Message):
     channel = client.get_channel(msg_dump_channel)
     if message.guild is None and not message.author.bot:
         # if the channel is public at all, make sure to sanitize this first
-        await channel.send("\"" + message.content + "\"" + " - " + message.author.name)
+        await channel.send("\"" + message.content + "\"" + " - " + f"<@{message.author.id}>")
+        if len(message.attachments) > 0:
+            for attachment in message.attachments:
+                await channel.send(file=attachment)
+
     await client.process_commands(message)
 
 
@@ -69,4 +67,4 @@ async def startgiveaway(ctx):
 
 
 
-client.run(token, reconnect=True)
+client.run('ODM2OTgxNzk3NjU2MTk5MjA5.YIl6Cg.AP8vZKeqfKVQ-LlyiJzQHniLmU0', reconnect=True)
